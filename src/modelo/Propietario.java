@@ -5,6 +5,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,10 +15,8 @@ import java.util.ArrayList;
 public class Propietario {
 
     // Nombre del dueño
+    private String id;
     private String nombre;
-
-    // Documento de identidad (puede ser cédula, por ejemplo)
-    private String documento;
 
     // Número de teléfono del propietario
     private String telefono;
@@ -25,15 +24,18 @@ public class Propietario {
     // Lista de mascotas que tiene este dueño
     private ArrayList<Mascota> mascotas;
 
+    private ArrayList<Propietario> propietarios;
+
     // Constructor que pide los datos del propietario al crearlo
-    public Propietario(String nombre, String documento, String telefono) {
+    public Propietario(String id, String nombre, String telefono) {
         /*this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
          */
         // ✅ Refactor: ahora usamos setters para validar los datos
+
+        setId (id);
         setNombre(nombre);
-        setDocumento(documento);
         setTelefono(telefono);
 
         // Se crea la lista de mascotas vacía (aún no tiene registradas)
@@ -59,8 +61,8 @@ public class Propietario {
     }
 
     // Devuelve el número de documento del dueño
-    public String getDocumento() {
-        return documento;
+    public String getId() {
+        return id;
     }
 
     /*
@@ -69,11 +71,11 @@ public class Propietario {
     }
      */
     // ✅ Refactor: validación del documento
-    public void setDocumento(String documento) {
-        if (documento == null || documento.length() < 5           ) {
+    public void setId(String id) {
+        if (id == null || id.length() < 5) {
             throw new IllegalArgumentException("Documento inválido.");
         }
-        this.documento = documento;
+        this.id = id;
     }
 
     // Devuelve el teléfono guardado
@@ -95,10 +97,12 @@ public class Propietario {
     }
 
     // Método para agregar una mascota a la lista del propietario
-    public void agregarMascota(Mascota mascota) {
+    public boolean agregarMascota(Mascota mascota) {
         if (mascota != null) {
             mascotas.add(mascota); // Solo se agrega si no es null
+            return true;
         }
+        return false;
     }
 
     // Devuelve la lista de mascotas de este propietario
@@ -110,7 +114,7 @@ public class Propietario {
     // Muestra toda la información del propietario
     public String mostrarInformacion() {
         String info = "Nombre: " + nombre + "\n";
-        info += "Documento: " + documento + "\n";
+        info += "Documento: " + id + "\n";
         info += "Telefono: " + telefono + "\n";
         return info;
     }

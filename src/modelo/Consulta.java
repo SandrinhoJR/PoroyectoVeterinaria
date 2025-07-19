@@ -15,7 +15,7 @@ import java.time.format.DateTimeParseException;
 public class Consulta {
 
     // Atributo para guardar el código único de la consulta
-    private String codigo;
+    private String id;
 
     // Atributo para guardar la fecha en la que se hace la consulta
     // private String fecha;
@@ -24,40 +24,22 @@ public class Consulta {
 
     // Atributo para guardar el veterinario que atiende la consulta
     private Veterinario veterinario;
+    
+   
 
-    // Constructor de la clase que recibe los datos y los guarda
-    public Consulta(String codigo, String fecha, Veterinario veterinario) {
-        /*  this.codigo = codigo;
-            this.fecha = fecha;
-            this.veterinario = veterinario;
-         */
-        // Usamos los métodos set para validar y asignar los valores
-        setCodigo(codigo);
-        setFecha(fecha);
-        setVeterinario(veterinario);
+    public Consulta(String id, LocalDate fecha, Veterinario veterinario) {
+        this.id = id;
+        this.fecha = fecha;
+        this.veterinario = veterinario;
     }
 
-    // Método para obtener el veterinario de esta consulta
     public Veterinario getVeterinario() {
         return veterinario;
     }
 
-    /*
-    public void setVeterinario(Veterinario veterinario) {
-        this.veterinario = veterinario;
-    }
-     */
-    // Método para asignar el veterinario, con validación para que no sea null
-    public void setVeterinario(Veterinario veterinario) {
-        if (veterinario == null) {
-            throw new IllegalArgumentException("Veterinario requerido.");
-        }
-        this.veterinario = veterinario;
-    }
-
     // Devuelve el código de la consulta
-    public String getCodigo() {
-        return codigo;
+    public String getId() {
+        return id;
     }
 
     /*
@@ -66,11 +48,11 @@ public class Consulta {
     }
      */
     // Método para asignar el código, con validación para que no esté vacío o nulo
-    public void setCodigo(String codigo) {
-        if (codigo == null || codigo.isBlank()) {
+    public void setId(String id) {
+        if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("Código inválido.");
         }
-        this.codigo = codigo;
+        this.id = id;
     }
 
     /*
@@ -92,6 +74,12 @@ public class Consulta {
         }
     }
 
+  
+    
+    
+    
+    
+
     /*
     public void setFecha(String fecha) {
         this.fecha = fecha;
@@ -100,11 +88,9 @@ public class Consulta {
     // Este método devuelve todos los datos de la consulta en forma de texto
     @Override
     public String toString() {
-        String info = "Codigo: " + codigo + "\n";
+        String info = "ID   : " + id + "\n";
         info += "Fecha: " + fecha + "\n";
-        info += "Veterinario: " + veterinario.getNombre() + "\n";
-        info += "Especialidad: " + veterinario.getEspecialidad() + "\n";
-
+        info += "Veterinario: " + veterinario.getNombre()+ "\n";
         return info;
     }
 }

@@ -4,12 +4,10 @@
  */
 package taller3;
 
-import modelo.Mascota;
-import modelo.Propietario;
-import java.util.Scanner;
-import modelo.Consulta;
-import modelo.Veterinario;
-import modelo.IDGenerator;
+import controlador.ControladorMascota;
+import controlador.ControladorPropietario;
+import vistas.VistaMascota;
+import vistas.VistaPropietario;
 
 /**
  *
@@ -18,7 +16,7 @@ import modelo.IDGenerator;
 public class Taller3 {
 
     public static void main(String[] args) {
-        // Se crea un objeto Scanner para poder leer lo que el usuario escribe por teclado
+       /* // Se crea un objeto Scanner para poder leer lo que el usuario escribe por teclado
         Scanner scanner = new Scanner(System.in);
 
         // === Registro del Propietario ===
@@ -103,4 +101,18 @@ public class Taller3 {
         // Se cierra el Scanner para liberar recursos
         scanner.close();
     }
+*/
+   
+        // Crear los controladores una sola vez
+        ControladorMascota controladorMascota = new ControladorMascota();
+        ControladorPropietario controladorPropietario = new ControladorPropietario();
+
+        // Crear las vistas pasándoles los dos controladores
+        VistaMascota vistaMascota = new VistaMascota();
+        VistaPropietario vistaPropietario = new VistaPropietario();
+
+        // Mostrar la vista principal
+        vistaPropietario.setVisible(true);
+    }
+
 }

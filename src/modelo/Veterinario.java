@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sandro rendon
@@ -12,26 +14,41 @@ package modelo;
 public class Veterinario {
 
     // Nombre del veterinario
+    private String id;
+    
     private String nombre;
 
     // Especialidad del vet (puede ser cirugía, dermatología, etc.)
     private String especialidad;
+    
+    private String disponibilidad;
+    
 
     // Constructor que recibe el nombre y la especialidad del veterinario
-    public Veterinario(String nombre, String especialidad) {
-        /*    this.nombre = nombre;
-              this.especialidad = especialidad;
-         */
-        // ✅ Refactor: validación de argumentos usando setters
-        setNombre(nombre); // Se valida y asigna el nombre
-        setEspecialidad(especialidad); // Se valida y asigna la especialidad
+
+    public Veterinario(String id, String nombre, String especialidad, String disponibilidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.especialidad = especialidad;
+        this.disponibilidad = disponibilidad;
     }
+    
 
     // Muestra la info del veterinario por consola
     public void mostrarInfo() {
         System.out.println("Veterinario: " + nombre);
         System.out.println("Especialidad: " + especialidad);
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
 
     // Devuelve el nombre del veterinario
     public String getNombre() {
@@ -64,4 +81,14 @@ public class Veterinario {
         }
         this.especialidad = especialidad;
     }
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+    
+    
 }
